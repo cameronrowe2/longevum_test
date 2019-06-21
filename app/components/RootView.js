@@ -120,9 +120,15 @@ export default View.extend({
       dataType: "json",
       type: "get",
       contentType: "application/json",
-      headers: {
-        Authorization:
-          "Basic Y2FtZXJvbnJvd2VhdUBnbWFpbC5jb206U3JyZ0xhWUxxMnZrSDdlZw=="
+      // headers: {
+      //   Authorization:
+      //     "Basic Y2FtZXJvbnJvd2VhdUBnbWFpbC5jb206U3JyZ0xhWUxxMnZrSDdlZw=="
+      // },
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader(
+          "Authorization",
+          "Basic " + btoa("cameronroweau@gmail.com" + ":" + "SrrgLaYLq2vkH7eg")
+        );
       },
       crossDomain: true,
       success: function(data, textStatus, jQxhr) {
