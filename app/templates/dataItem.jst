@@ -1,3 +1,30 @@
-<td id="reading_type"><%= reading_type %></td>
-<td id="timestamp"><%= timestamp%></td>
-<td id="source"><%= source%></td>
+<%if (reading_type == "reading_water") { %>
+	<td id="reading_type">Value: <%= values.value %></td>
+	<td id="timestamp">Date: <%= timestamp %></td>
+<% } else if(reading_type == "reading_waist") { %>
+	<td id="reading_type">Unit: <%= values.unit %></td>
+	<td id="timestamp">Value: <%= values.value %></td>
+	<td id="source">Date: <%= timestamp %></td>
+<% } else if(reading_type == "reading_activities_summaries") { %>
+	<td id="reading_type">Calories: <%= values.calories %></td>
+	<td id="timestamp">Distance: <%= values.distance %></td>
+	<td id="source">Duration: <%= values.duration%></td>
+	<td id="source">Moderate: <%= values.moderate%></td>
+	<td id="source">Sedentary: <%= values.sedentary%></td>
+	<td id="source">Steps: <%= values.steps%></td>
+	<td id="source">Vigorous: <%= values.vigorous%></td>
+	<td id="timestamp">Date: <%= timestamp %></td>
+<% } else if(reading_type == "reading_blood_pressure") { %>
+	<td id="reading_type">Diastolic: <%= values.diastolic %></td>
+	<td id="timestamp">Heartrate: <%= values.heartrate %></td>
+	<td id="source">Systolic: <%= values.systolic%></td>
+	<td id="timestamp">Date: <%= timestamp %></td>
+<% } else if(reading_type == "reading_weight") { %>
+	<td id="reading_type">Unit: <%= values.unit %></td>
+	<td id="timestamp">Value: <%= values.value %></td>
+	<td id="timestamp">Date: <%= timestamp %></td>
+<% } else { %>
+	<td id="reading_type"><%= reading_type %></td>
+	<td id="timestamp"><%= timestamp %></td>
+	<td id="source"><%= source%></td>
+<% } %>

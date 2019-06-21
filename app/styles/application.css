@@ -28,3 +28,21 @@ a:hover {
 .reading_type_button {
   text-transform: capitalize;
 }
+
+table,
+tr,
+td {
+  border: 1px black solid;
+  border-collapse: collapse;
+}
+
+.reading_type_button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: lightblue;
+}
+
+.reading_type_button:hover {
+  background-color: black;
+  color: white;
+}

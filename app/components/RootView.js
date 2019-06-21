@@ -7,6 +7,12 @@ import BodyView from "./BodyView";
 import Backbone from "backbone";
 import Button from "./Button";
 import GlobalData from "./GlobalData";
+import ReadingBloodGlucoseView from "./reading/ReadingBloodGlucoseView";
+import ReadingBmiView from "./reading/ReadingBmiView";
+import ReadingBodyFatView from "./reading/ReadingBodyFatView";
+import ReadingSleepSummariesView from "./reading/ReadingSleepSummariesView";
+import ReadingMealsView from "./reading/ReadingMealsView";
+import ReadingActivitiesView from "./reading/ReadingActivitiesView";
 
 export default View.extend({
   template: _.template(
@@ -45,9 +51,39 @@ export default View.extend({
     var myData = new DataCollection(GlobalData.get());
 
     var readingData = myData.forCategory(reading_type);
-    var readingDataView = new BodyView({
-      collection: readingData
-    });
+    var readingDataView;
+
+    if (reading_type === "reading_blood_glucose") {
+      readingDataView = new ReadingBloodGlucoseView({
+        collection: readingData
+      });
+    } else if (reading_type === "reading_bmi") {
+      readingDataView = new ReadingBmiView({
+        collection: readingData
+      });
+    } else if (reading_type === "reading_body_fat") {
+      readingDataView = new ReadingBodyFatView({
+        collection: readingData
+      });
+    } else if (reading_type === "reading_sleep_summaries") {
+      readingDataView = new ReadingSleepSummariesView({
+        collection: readingData
+      });
+    } else if (reading_type === "reading_meals") {
+      readingDataView = new ReadingMealsView({
+        collection: readingData
+      });
+    } else if (reading_type === "reading_activities") {
+      readingDataView = new ReadingActivitiesView({
+        collection: readingData
+      });
+    } else {
+      readingDataView = new BodyView({
+        collection: readingData
+      });
+    }
+
+    console.log(readingData);
 
     this.showChildView("body", readingDataView);
   },
